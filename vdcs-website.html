@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>విజయ దుర్గ చిమ్ని సర్వీస్ సెంటర్</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #c0392b;
+      --deep-red: #922b21;
+      --gold: #f0a500;
+      --dark: #1a0a00;
+      --cream: #fff8f0;
+      --orange: #e67e22;
+      --smoke: #f5efe8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hind', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #3d1a00 60%, #5a2500 100%);
+      color: white;
+      text-align: center;
+      padding: 0 1rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.18) 0%, transparent 70%);
+    }
+
+    .flame-strip {
+      display: flex;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 1rem 0 0.5rem;
+      font-size: 1.8rem;
+      animation: flicker 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes flicker {
+      from { opacity: 0.8; transform: scaleY(1); }
+      to   { opacity: 1;   transform: scaleY(1.07); }
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Rozha One', serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Rozha One', serif;
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      line-height: 1.2;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: #f5c87a;
+      margin: 0.6rem 0 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    .charges-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .charge-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(240,165,0,0.4);
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      color: #fde;
+      backdrop-filter: blur(4px);
+    }
+
+    .charge-pill strong { color: var(--gold); font-size: 1rem; }
+
+    /* ===== SECTION ===== */
+    section { padding: 2.5rem 1rem; max-width: 700px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Rozha One', serif;
+      font-size: 1.4rem;
+      color: var(--deep-red);
+      border-left: 4px solid var(--gold);
+      padding-left: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ===== BOOKING FORM ===== */
+    .form-wrap {
+      background: white;
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 40px rgba(192,57,43,0.10);
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--deep-red);
+      letter-spacing: 0.5px;
+    }
+
+    input, select, textarea {
+      border: 1.5px solid #e8d5c0;
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+      font-family: 'Hind', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      background: var(--smoke);
+      transition: border 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(240,165,0,0.15);
+      background: #fffdf8;
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .upload-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--smoke);
+      border: 1.5px dashed #d5b890;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #7a5c3a;
+      transition: border-color 0.2s;
+    }
+    .upload-label:hover { border-color: var(--gold); }
+    .upload-label input[type="file"] { display: none; }
+    .upload-icon { font-size: 1.3rem; }
+
+    .file-name {
+      font-size: 0.78rem;
+      color: #999;
+      margin-top: 0.2rem;
+    }
+
+    /* WhatsApp button */
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.9rem 2rem;
+      font-family: 'Hind', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+    }
+    .wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    }
+    .wa-icon { font-size: 1.4rem; }
+
+    /* ===== SERVICES GRID ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.85rem; font-weight: 600; color: var(--deep-red); }
+
+    /* ===== BRANDS ===== */
+    .brands-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .brand-tag {
+      background: var(--dark);
+      color: var(--gold);
+      border-radius: 6px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== INFO CARD ===== */
+    .info-card {
+      background: linear-gradient(135deg, var(--deep-red), #6b1c10);
+      color: white;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 6px 30px rgba(192,57,43,0.25);
+    }
+    .info-card h3 {
+      font-family: 'Rozha One', serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .info-row .emoji { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: #c8a87a;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+    }
+    footer span { color: var(--gold); font-family: 'Rozha One', serif; font-size: 1rem; }
+
+    /* ===== Responsive ===== */
+    @media (min-width: 600px) {
+      .hero { padding: 0 2rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="flame-strip">🔥🔥🔥🔥🔥</div>
+  <div class="badge">🌈 VDCS — Since Day One</div>
+  <h1>విజయ దుర్గ <span>చిమ్ని</span> సర్వీస్ సెంటర్</h1>
+  <p class="hero-sub">స్పేర్స్ పార్ట్స్ • సర్వీసింగ్ • ఇన్‌స్టాలేషన్ | All Companies</p>
+  <div class="charges-row">
+    <div class="charge-pill">🏠 Visiting Charge: <strong>₹250/-</strong></div>
+    <div class="charge-pill">📍 5km Outside: <strong>₹450/-</strong></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section>
+  <div class="section-title">మా సేవలు</div>
+  <div class="services-grid">
+    <div class="service-card"><div class="icon">🔧</div><p>Chimney Repair</p></div>
+    <div class="service-card"><div class="icon">🛠️</div><p>Hob Servicing</p></div>
+    <div class="service-card"><div class="icon">📦</div><p>Spare Parts</p></div>
+    <div class="service-card"><div class="icon">🔩</div><p>Installation</p></div>
+    <div class="service-card"><div class="icon">🏠</div><p>Home Visit</p></div>
+    <div class="service-card"><div class="icon">✅</div><p>All Brands</p></div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section style="padding-top:0">
+  <div class="section-title">మేము సర్వీస్ చేసే Brands</div>
+  <div class="brands-wrap">
+    <span class="brand-tag">Faber</span>
+    <span class="brand-tag">Elica</span>
+    <span class="brand-tag">Glen</span>
+    <span class="brand-tag">Hindware</span>
+    <span class="brand-tag">Sunflame</span>
+    <span class="brand-tag">Prestige</span>
+    <span class="brand-tag">Bosch</span>
+    <span class="brand-tag">Kaff</span>
+    <span class="brand-tag">IFB</span>
+    <span class="brand-tag">Butterfly</span>
+    <span class="brand-tag">Whirlpool</span>
+    <span class="brand-tag">& All Others</span>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section>
+  <div class="section-title">📋 సర్వీస్ బుక్ చేయండి</div>
+  <div class="form-wrap">
+    <div class="form-row">
+      <label>1. Customer Name</label>
+      <input type="text" id="f-name" placeholder="మీ పూర్తి పేరు" />
+    </div>
+    <div class="form-row">
+      <label>2. Postal / Residence Address</label>
+      <textarea id="f-addr" placeholder="ఇల్లు నంబర్, వీధి పేరు..."></textarea>
+    </div>
+    <div class="form-row">
+      <label>3. Town / Village</label>
+      <input type="text" id="f-town" placeholder="మీ ఊరు / పట్టణం" />
+    </div>
+    <div class="form-row">
+      <label>4. Mobile / Other Number</label>
+      <input type="tel" id="f-mobile" placeholder="+91 XXXXX XXXXX" />
+    </div>
+    <div class="form-row">
+      <label>5. Chimney or Hob Picture (optional)</label>
+      <label class="upload-label">
+        <span class="upload-icon">📷</span>
+        <span id="pic-label">Photo Upload చేయండి</span>
+        <input type="file" accept="image/*" onchange="document.getElementById('pic-label').textContent = this.files[0]?.name || 'Photo Upload చేయండి'" />
+      </label>
+    </div>
+    <div class="form-row">
+      <label>6. Model & Company Name</label>
+      <input type="text" id="f-model" placeholder="ఉదా: Faber Hood Crystal 3D 60" />
+    </div>
+    <div class="form-row">
+      <label>7. Problem / Installation?</label>
+      <select id="f-problem">
+        <option value="">ఎంచుకోండి</option>
+        <option>Installation కావాలి</option>
+        <option>శబ్దం వస్తోంది</option>
+        <option>పని చేయడం లేదు</option>
+        <option>Motor Problem</option>
+        <option>Suction తక్కువగా ఉంది</option>
+        <option>Light పని చేయడం లేదు</option>
+        <option>Spare Part కావాలి</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>8. Date of Purchase</label>
+      <input type="date" id="f-dop" />
+    </div>
+    <div class="form-row">
+      <label>9. Bill & Warranty Card Pics (optional)</label>
+      <label class="upload-label">
+        <span class="upload-icon">🧾</span>
+        <span id="bill-label">Bill / Warranty Upload చేయండి</span>
+        <input type="file" accept="image/*" onchange="document.getElementById('bill-label').textContent = this.files[0]?.name || 'Bill / Warranty Upload చేయండి'" />
+      </label>
+    </div>
+    <div class="form-row">
+      <label>10. Google Map Location Link</label>
+      <input type="url" id="f-loc" placeholder="https://maps.google.com/..." />
+    </div>
+
+    <button class="wa-btn" onclick="sendWhatsApp()">
+      <span class="wa-icon">💬</span> WhatsApp లో పంపండి
+    </button>
+  </div>
+</section>
+
+<!-- CONTACT INFO -->
+<section style="padding-top:0">
+  <div class="info-card">
+    <h3>📞 సంప్రదించండి</h3>
+    <div class="info-row">
+      <span class="emoji">🌈</span>
+      <span>విజయ దుర్గ చిమ్ని, స్టౌవ్స్ & సర్వీసింగ్ సెంటర్ — <strong>VDCS</strong></span>
+    </div>
+    <div class="info-row">
+      <span class="emoji">🏠</span>
+      <span>Visiting Charges: <strong>₹250/-</strong> (Local) &nbsp;|&nbsp; <strong>₹450/-</strong> (5km Outside)</span>
+    </div>
+    <div class="info-row">
+      <span class="emoji">🔧</span>
+      <span>All Companies Chimney, Hob, Stove — Repair & Installation</span>
+    </div>
+    <div class="info-row">
+      <span class="emoji">📦</span>
+      <span>Genuine Spare Parts Available</span>
+    </div>
+    <div class="info-row">
+      <span class="emoji">⏰</span>
+      <span>Monday – Saturday: 9:00 AM – 7:00 PM</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>VDCS 🌈</span><br/>
+  విజయ దుర్గ చిమ్ని సర్వీస్ సెంటర్ &nbsp;|&nbsp; All Rights Reserved
+</footer>
+
+<script>
+  function sendWhatsApp() {
+    const name     = document.getElementById('f-name').value.trim();
+    const addr     = document.getElementById('f-addr').value.trim();
+    const town     = document.getElementById('f-town').value.trim();
+    const mobile   = document.getElementById('f-mobile').value.trim();
+    const model    = document.getElementById('f-model').value.trim();
+    const problem  = document.getElementById('f-problem').value.trim();
+    const dop      = document.getElementById('f-dop').value.trim();
+    const loc      = document.getElementById('f-loc').value.trim();
+
+    if (!name || !mobile) {
+      alert('దయచేసి పేరు మరియు మొబైల్ నంబర్ నమోదు చేయండి.');
+      return;
+    }
+
+    const msg = `🌈 *VDCS సర్వీస్ రిక్వెస్ట్*\n\n`
+      + `1️⃣ *Customer Name:* ${name}\n`
+      + `2️⃣ *Address:* ${addr || '—'}\n`
+      + `3️⃣ *Town/Village:* ${town || '—'}\n`
+      + `4️⃣ *Mobile:* ${mobile}\n`
+      + `5️⃣ *Model & Company:* ${model || '—'}\n`
+      + `6️⃣ *Problem/Installation:* ${problem || '—'}\n`
+      + `7️⃣ *Date of Purchase:* ${dop || '—'}\n`
+      + `8️⃣ *Location:* ${loc || '—'}\n\n`
+      + `Please confirm my service booking. 🙏`;
+
+    // Replace with your actual WhatsApp number (country code, no +)
+    const phone = '919999999999';
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
